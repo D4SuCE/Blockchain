@@ -25,7 +25,7 @@ namespace Utils
 
 		std::stringstream ss;
 
-		for (int i = 0; i < len; i++)
+		for (size_t i = 0; i < len; i++)
 		{
 			ss << std::hex << std::setw(2) << std::setfill('0') << (int)hash[i];
 		}
@@ -37,7 +37,7 @@ namespace Utils
 	{
 		merkle::Tree mt;
 
-		for (unsigned i = 0; i < data.size(); i++)
+		for (size_t i = 0; i < data.size(); i++)
 		{
 			mt.insert(sha256(data[i]));
 		}
@@ -47,7 +47,7 @@ namespace Utils
 
 	std::pair<std::string, size_t> findHash(size_t difficulty, size_t index, const std::string& prevHash, const std::vector<std::string>& data)
 	{
-		std::string target("0", difficulty);
+		std::string target(difficulty, '0');
 		std::string header =  std::to_string(index) + prevHash + getMerkleRoot(data).to_string();
 
 		auto start = std::chrono::high_resolution_clock::now();

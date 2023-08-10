@@ -63,8 +63,10 @@ namespace Utils
 				auto finish = std::chrono::high_resolution_clock::now();
 				std::chrono::duration<double, std::milli> elapsed = finish - start;
 				spdlog::info("Success!");
+				std::this_thread::sleep_for(std::chrono::seconds(1));
 				std::cout << "Elapsed Time: ~" << (elapsed.count() / 1000) << " seconds" << std::endl;
 				std::cout << std::endl;
+				std::this_thread::sleep_for(std::chrono::seconds(1));
 				return std::make_pair(hash, i);
 			}
 		}

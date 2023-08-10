@@ -140,12 +140,14 @@
     </ClCompile>
     <ClCompile Include="src\ledger.cpp" />
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\miner.cpp" />
     <ClCompile Include="src\utils.cpp" />
     <ClCompile Include="vendor\libfort\lib\fort.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\block.h" />
     <ClInclude Include="include\ledger.h" />
+    <ClInclude Include="include\miner.h" />
     <ClInclude Include="include\utils.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

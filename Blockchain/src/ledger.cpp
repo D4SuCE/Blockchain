@@ -68,9 +68,9 @@ void Blockchain::start(Stage stage)
 			std::vector<std::string> data;
 			data.push_back("Genesis");
 
-			std::pair<std::string, size_t> nonce = Utils::findHash(4, 0, std::string("000000000000000000000000000000000000000001"), data);
+			std::pair<std::string, size_t> nonce = Utils::findHash(2, 0, std::string("000000000000000000000000000000000000000001"), data);
 
-			blockchain.push_back(Block(nonce.second, nonce.first, std::string("000000000000000000000000000000000000000001"), Block::getTime(), data, 0, 4));
+			blockchain.push_back(Block(nonce.second, nonce.first, std::string("000000000000000000000000000000000000000001"), Block::getTime(), data, 0, 2));
 
 			spdlog::info("Blockchain has been created");
 

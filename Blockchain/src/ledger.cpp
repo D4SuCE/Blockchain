@@ -38,14 +38,14 @@ std::string Blockchain::getLatestBlockHash() const
 	return blockchain.back().getHash();
 }
 
-void Blockchain::addBlock(size_t nonce, 
+void Blockchain::addBlock(size_t nonce,
 				const std::string& hash, 
 				const std::string& prevHash, 
 				const std::string& timestamp, 
 				const std::vector<std::string>& data, 
 				size_t counter, size_t difficulty)
 {
-	std::string target("0", difficulty);
+	std::string target(difficulty, '0');
 	std::string header = std::to_string(counter) + prevHash + Utils::getMerkleRoot(data).to_string() + std::to_string(nonce);
 
 	if (!Utils::sha256(header).compare(hash) && hash.substr(0, difficulty) == target && counter == blockchain.size())
@@ -68,9 +68,9 @@ void Blockchain::start(Stage stage)
 			std::vector<std::string> data;
 			data.push_back("Genesis");
 
-			std::pair<std::string, size_t> nonce = Utils::findHash(1, 0, std::string("000000000000000000000000000000000000000001"), data);
+			std::pair<std::string, size_t> nonce = Utils::findHash(4, 0, std::string("000000000000000000000000000000000000000001"), data);
 
-			blockchain.push_back(Block(nonce.second, nonce.first, std::string("000000000000000000000000000000000000000001"), Block::getTime(), data, 0, 1));
+			blockchain.push_back(Block(nonce.second, nonce.first, std::string("000000000000000000000000000000000000000001"), Block::getTime(), data, 0, 4));
 
 			spdlog::info("Blockchain has been created");
 
